@@ -3,101 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𓆩 تــائــب | يـــوســـف 𓆪</title>
+    <title>التائب | يوسف</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap" rel="stylesheet">
+    <!-- Google Fonts (واضحة وجميلة للعربية) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables */
+        /* ===== إعادة التعيين والمتغيرات ===== */
         :root {
-            /* الألوان الرئيسية */
-            --color-desert-gold: #D4A76A;
-            --color-desert-brown: #8B4513;
-            --color-dark-sand: #A0522D;
-            --color-shadow-dark: #2C1810;
-            --color-sand-light: #E6CCA5;
-            --color-sky-blue: #1E3A5F;
-            --color-twilight: #4A2C2A;
-            --color-white: #F8F5F0;
-            --color-silver: #C0C0C0;
-            --color-gold-light: #FFD700;
-            --color-blood: #8B0000;
-            --color-hope: #6B8E23;
-            
-            /* تدرجات الظلال */
-            --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 10px 20px rgba(0, 0, 0, 0.15);
-            --shadow-hard: 0 15px 30px rgba(0, 0, 0, 0.25);
-            --shadow-glow: 0 0 15px rgba(212, 167, 106, 0.5);
-            
-            /* أحجام الخطوط */
-            --font-size-xs: 0.875rem;
-            --font-size-sm: 1rem;
-            --font-size-md: 1.25rem;
-            --font-size-lg: 1.5rem;
-            --font-size-xl: 2rem;
-            --font-size-xxl: 3rem;
-            --font-size-xxxl: 4rem;
-            
-            /* المسافات */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 3rem;
-            --spacing-xl: 5rem;
-            
-            /* أنيميشن */
-            --transition-slow: 1s ease;
-            --transition-medium: 0.5s ease;
-            --transition-fast: 0.3s ease;
+            --gold: #C9A87C;
+            --gold-light: #E8D5B5;
+            --gold-dark: #A5845A;
+            --sand: #E6D3C0;
+            --desert-bg: #1A110E;
+            --card-bg: rgba(26, 17, 14, 0.88);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            --glow: 0 0 25px rgba(201, 168, 124, 0.3);
+            --radius: 18px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-main: 'Cairo', 'Traditional Arabic', sans-serif;
         }
-        
-        /* إعادة التعيين */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Reem Kufi', 'Noto Naskh Arabic', 'Traditional Arabic', serif;
-            background-color: var(--color-shadow-dark);
-            color: var(--color-white);
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: var(--font-main);
+            background: var(--desert-bg);
+            color: #F2EAE1;
+            line-height: 1.9;
             direction: rtl;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        
-        /* الخلفية البانورامية */
-        .background-container {
+
+        /* ===== خلفية بانورامية هادئة ===== */
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             z-index: -2;
-            overflow: hidden;
+            background: linear-gradient(145deg, #0D0907 0%, #3A261C 40%, #70543E 70%, #B18B6B 100%);
+            opacity: 0.7;
         }
-        
-        .desert-background {
+        .bg-container::after {
+            content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 300%;
-            background: linear-gradient(
-                to bottom,
-                var(--color-sky-blue) 0%,
-                var(--color-twilight) 20%,
-                var(--color-desert-gold) 30%,
-                var(--color-desert-brown) 70%,
-                var(--color-shadow-dark) 100%
-            );
-            transform: translateZ(-1px) scale(2);
+            height: 45%;
+            background: radial-gradient(ellipse at 30% 100%, rgba(201, 168, 124, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
-        
-        /* تأثيرات الفانتازيا */
-        .fantasy-elements {
+
+        /* ===== عناصر فانتازية خفيفة ===== */
+        .fantasy {
             position: fixed;
             top: 0;
             left: 0;
@@ -105,1335 +75,1104 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
+            overflow: hidden;
         }
-        
-        .sand-dunes {
+        .fantasy .dust {
             position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(
-                to top,
-                transparent 0%,
-                rgba(139, 69, 19, 0.3) 20%,
-                rgba(139, 69, 19, 0.6) 100%
-            );
-            border-radius: 50% 50% 0 0;
+            width: 300%;
+            height: 300%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 20% 30%, rgba(230, 211, 192, 0.03) 0%, transparent 60%);
+            animation: drift 40s linear infinite alternate;
         }
-        
-        .ghost-eyes {
+        @keyframes drift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(5%, 3%) rotate(3deg); }
+        }
+        .fantasy .glow-orb {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(173, 216, 230, 0.3);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(173, 216, 230, 0.7);
-            animation: blink 5s infinite alternate;
+            filter: blur(60px);
+            opacity: 0.2;
         }
-        
-        .ghost-eyes:nth-child(1) {
-            top: 40%;
-            left: 20%;
-        }
-        
-        .ghost-eyes:nth-child(2) {
-            top: 60%;
-            left: 70%;
-        }
-        
-        .ghost-eyes:nth-child(3) {
-            top: 30%;
-            left: 50%;
-        }
-        
-        .ghost-eyes:nth-child(4) {
-            top: 50%;
-            left: 10%;
-        }
-        
-        .ghost-eyes:nth-child(5) {
-            top: 70%;
-            left: 80%;
-        }
-        
-        .floating-rooh {
-            position: absolute;
-            top: 50%;
-            left: 40%;
-            width: 80px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50% 50% 10px 10px;
-            filter: blur(2px);
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .floating-rooh:after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            width: 60px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-        
-        .sun {
-            position: absolute;
+        .fantasy .glow-orb:nth-child(2) {
+            width: 300px;
+            height: 300px;
             top: 10%;
-            left: 80%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, var(--color-gold-light) 0%, rgba(255, 215, 0, 0.3) 70%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+            right: 5%;
+            background: radial-gradient(circle, #C9A87C, transparent);
         }
-        
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 2px);
-            background-size: 50px 50px;
-            animation: twinkle 10s infinite alternate;
+        .fantasy .glow-orb:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            bottom: 0;
+            left: -5%;
+            background: radial-gradient(circle, #7A5A3E, transparent);
         }
-        
-        /* الأنيميشن */
-        @keyframes blink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-20px) translateX(10px); }
-            50% { transform: translateY(0) translateX(20px); }
-            75% { transform: translateY(20px) translateX(10px); }
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* التصميم الرئيسي */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* الهيدر */
+
+        /* ===== الهيدر ===== */
         header {
-            padding: var(--spacing-md) 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(44, 24, 16, 0.9), transparent);
-            transition: var(--transition-medium);
+            padding: 18px 0;
+            background: linear-gradient(to bottom, rgba(13, 9, 7, 0.95) 0%, transparent 100%);
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
         }
-        
         header.scrolled {
-            background: rgba(44, 24, 16, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: var(--shadow-medium);
+            background: rgba(13, 9, 7, 0.96);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
         }
-        
         .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
-            font-family: 'Reem Kufi', cursive;
-            font-size: var(--font-size-xl);
-            color: var(--color-desert-gold);
-            text-shadow: 0 0 10px rgba(212, 167, 106, 0.5);
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--gold);
             text-decoration: none;
-            transition: var(--transition-fast);
+            letter-spacing: 1px;
+            transition: var(--transition);
         }
-        
         .logo:hover {
-            color: var(--color-gold-light);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            color: var(--gold-light);
+            text-shadow: 0 0 20px rgba(201, 168, 124, 0.3);
         }
-        
         .logo span {
-            color: var(--color-silver);
+            color: #AFA69A;
+            font-weight: 300;
         }
-        
-        /* أزرار التنقل بين الصفحات */
+
         .nav-buttons {
             display: flex;
-            gap: var(--spacing-sm);
+            gap: 12px;
         }
-        
         .nav-btn {
-            padding: var(--spacing-xs) var(--spacing-md);
-            background: rgba(212, 167, 106, 0.1);
-            color: var(--color-desert-gold);
-            border: 1px solid rgba(212, 167, 106, 0.3);
-            border-radius: 5px;
+            padding: 6px 22px;
+            background: transparent;
+            border: 1px solid rgba(201, 168, 124, 0.25);
+            border-radius: 40px;
+            color: var(--sand);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 400;
             cursor: pointer;
-            transition: var(--transition-fast);
-            font-family: 'Reem Kufi', cursive;
-            font-size: var(--font-size-sm);
+            transition: var(--transition);
         }
-        
         .nav-btn:hover {
-            background: rgba(212, 167, 106, 0.3);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
+            background: rgba(201, 168, 124, 0.12);
+            border-color: var(--gold);
+            color: #fff;
         }
-        
         .nav-btn.active {
-            background: rgba(212, 167, 106, 0.3);
-            border-color: var(--color-desert-gold);
+            background: rgba(201, 168, 124, 0.18);
+            border-color: var(--gold);
+            color: var(--gold-light);
         }
-        
-        /* الصفحات */
+
+        /* ===== الحاوية العامة ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* ===== الأقسام (الصفحات) ===== */
         section {
             display: none;
-            padding: var(--spacing-xl) 0;
-            animation: fadeIn 0.6s ease-in-out;
+            padding: 120px 0 60px;
             min-height: 100vh;
-            padding-top: 100px;
+            animation: fadeUp 0.7s ease forwards;
         }
-        
         section.active {
             display: block;
         }
-        
-        /* الصفحة الرئيسية */
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== الصفحة الرئيسية ===== */
         .home-content {
-            max-width: 800px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: var(--spacing-lg);
             text-align: center;
+            padding: 20px 0;
         }
-        
         .main-title {
-            font-family: 'Reem Kufi', cursive;
-            font-size: var(--font-size-xxxl);
-            color: var(--color-desert-gold);
-            margin-bottom: var(--spacing-md);
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
         }
-        
+        .main-title .light {
+            color: var(--gold-light);
+            font-weight: 300;
+        }
         .subtitle {
-            font-size: var(--font-size-lg);
-            color: var(--color-sand-light);
-            margin-bottom: var(--spacing-lg);
-            line-height: 1.6;
+            font-size: 1.3rem;
+            color: #DED3C6;
+            line-height: 2;
+            margin-bottom: 50px;
+            font-weight: 300;
         }
-        
-        /* القائمة الرئيسية */
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
+
+        /* ===== بطاقات القائمة ===== */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-xl);
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
-        
         .menu-card {
-            background: rgba(44, 24, 16, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: var(--spacing-lg);
-            border: 1px solid rgba(212, 167, 106, 0.2);
-            box-shadow: var(--shadow-hard);
-            transition: var(--transition-medium);
-            text-align: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(6px);
+            border-radius: var(--radius);
+            padding: 30px 18px;
+            border: 1px solid rgba(201, 168, 124, 0.15);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             cursor: pointer;
-            min-height: 300px;
+            text-align: center;
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--glow), var(--shadow);
+        }
+        .menu-card .icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        .menu-card:hover .icon {
+            transform: scale(1.1);
+            color: var(--gold-light);
+        }
+        .menu-card h3 {
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+        .menu-card p {
+            font-size: 0.95rem;
+            color: #C4B8AC;
+            font-weight: 300;
+        }
+
+        /* ===== قائمة الفصول ===== */
+        .chapters-list {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .chapter-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(6px);
+            border-radius: var(--radius);
+            padding: 25px 30px;
+            margin-bottom: 22px;
+            border: 1px solid rgba(201, 168, 124, 0.12);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .chapter-card:hover {
+            transform: translateX(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--glow);
+        }
+        .chapter-card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .chapter-number {
+            background: rgba(201, 168, 124, 0.15);
+            color: var(--gold);
+            padding: 3px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1px solid rgba(201, 168, 124, 0.2);
+        }
+        .chapter-card-title {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+        .chapter-excerpt {
+            color: #D3C7BA;
+            font-weight: 300;
+            font-size: 1.05rem;
+            padding-right: 10px;
+            border-right: 2px solid rgba(201, 168, 124, 0.2);
+        }
+
+        /* ===== صفحة الفصل المفصل ===== */
+        .chapter-detail {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius);
+            padding: 50px 55px;
+            border: 1px solid rgba(201, 168, 124, 0.15);
+            box-shadow: var(--shadow);
+        }
+        .chapter-detail .chapter-number {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .chapter-detail-title {
+            font-size: 2.6rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(201, 168, 124, 0.2);
+            padding-bottom: 18px;
+        }
+        .chapter-detail-content {
+            font-size: 1.15rem;
+            line-height: 2.1;
+            color: #E2D6C9;
+        }
+        .chapter-detail-content p {
+            margin-bottom: 25px;
+        }
+        .highlight {
+            color: var(--gold-light);
+            font-weight: 700;
+            cursor: help;
+            border-bottom: 1px dashed rgba(201, 168, 124, 0.4);
+            padding-bottom: 1px;
+            transition: var(--transition);
+        }
+        .highlight:hover {
+            color: #fff;
+            border-bottom-color: var(--gold);
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(201, 168, 124, 0.15);
+            flex-wrap: wrap;
+        }
+        .navigation-buttons .nav-btn {
+            padding: 10px 28px;
+            font-size: 1rem;
+        }
+        .nav-btn.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* ===== صفحة المعلومات والشخصيات ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .info-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(6px);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid rgba(201, 168, 124, 0.1);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .info-card:hover {
+            border-color: rgba(201, 168, 124, 0.25);
+        }
+        .info-title {
+            font-size: 1.7rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(201, 168, 124, 0.15);
+            padding-bottom: 12px;
+        }
+        .info-content {
+            color: #D3C7BA;
+            font-weight: 300;
+        }
+        .info-list {
+            list-style: none;
+            padding-right: 0;
+            margin-top: 12px;
+        }
+        .info-list li {
+            padding-right: 22px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .info-list li::before {
+            content: "✦";
+            color: var(--gold);
+            position: absolute;
+            right: 0;
+            font-size: 0.8rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(201, 168, 124, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(201, 168, 124, 0.15);
+        }
+        .social-link:hover {
+            background: rgba(201, 168, 124, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        /* ===== أزرار إضافية ===== */
+        .btn-center {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        /* ===== الفوتر ===== */
+        footer {
+            padding: 40px 0 25px;
+            text-align: center;
+            border-top: 1px solid rgba(201, 168, 124, 0.08);
+            margin-top: 40px;
+            color: #AFA69A;
+            font-weight: 300;
+        }
+        footer .copyright {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            opacity: 0.7;
+        }
+
+        /* ===== شاشة تحميل ===== */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0D0907;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
         }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--color-desert-gold);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .menu-icon {
-            font-size: var(--font-size-xxl);
-            color: var(--color-desert-gold);
-            margin-bottom: var(--spacing-md);
-            transition: var(--transition-medium);
-        }
-        
-        .menu-card:hover .menu-icon {
-            transform: scale(1.2);
-            color: var(--color-gold-light);
-        }
-        
-        .menu-title {
-            font-size: var(--font-size-xl);
-            color: var(--color-desert-gold);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .menu-description {
-            color: var(--color-sand-light);
-            font-size: var(--font-size-md);
-        }
-        
-        /* صفحة الفصول */
-        .chapters-list {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .chapter-card {
-            background: rgba(44, 24, 16, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
-            border: 1px solid rgba(212, 167, 106, 0.2);
-            box-shadow: var(--shadow-hard);
-            transition: var(--transition-medium);
-            cursor: pointer;
-        }
-        
-        .chapter-card:hover {
-            transform: translateX(-10px);
-            border-color: var(--color-desert-gold);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .chapter-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-md);
-            border-bottom: 2px solid var(--color-desert-gold);
-            padding-bottom: var(--spacing-sm);
-        }
-        
-        .chapter-number {
-            font-size: var(--font-size-md);
-            background: var(--color-desert-brown);
-            color: var(--color-desert-gold);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        .chapter-card-title {
-            font-size: var(--font-size-xl);
-            color: var(--color-desert-gold);
-        }
-        
-        .chapter-excerpt {
-            color: var(--color-sand-light);
-            font-size: var(--font-size-md);
-            line-height: 1.8;
-        }
-        
-        /* صفحة الفصل المفصل */
-        .chapter-detail {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(44, 24, 16, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: var(--spacing-xl);
-            border: 1px solid rgba(212, 167, 106, 0.3);
-            box-shadow: var(--shadow-hard);
-        }
-        
-        .chapter-detail-header {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-            border-bottom: 2px solid var(--color-desert-gold);
-            padding-bottom: var(--spacing-lg);
-        }
-        
-        .chapter-detail-title {
-            font-size: var(--font-size-xxl);
-            color: var(--color-desert-gold);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .chapter-detail-content {
-            font-size: var(--font-size-lg);
-            line-height: 2;
-            margin-bottom: var(--spacing-xl);
-            text-align: justify;
-        }
-        
-        .chapter-detail-content p {
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .highlight {
-            color: var(--color-desert-gold);
-            font-weight: bold;
-            position: relative;
-            cursor: help;
-        }
-        
-        .highlight:hover:after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            right: 50%;
-            transform: translateX(50%);
-            background: rgba(44, 24, 16, 0.95);
-            color: var(--color-sand-light);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: 5px;
-            font-size: var(--font-size-sm);
-            white-space: nowrap;
-            z-index: 100;
-            border: 1px solid var(--color-desert-gold);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: var(--spacing-xl);
-            padding-top: var(--spacing-lg);
-            border-top: 1px solid rgba(212, 167, 106, 0.2);
-        }
-        
-        /* صفحة المعلومات */
-        .info-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-xl);
-        }
-        
-        .info-card {
-            background: rgba(44, 24, 16, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: var(--spacing-lg);
-            border: 1px solid rgba(212, 167, 106, 0.2);
-            box-shadow: var(--shadow-hard);
-        }
-        
-        .info-title {
-            font-size: var(--font-size-xl);
-            color: var(--color-desert-gold);
-            margin-bottom: var(--spacing-md);
-            border-bottom: 1px solid rgba(212, 167, 106, 0.3);
-            padding-bottom: var(--spacing-sm);
-        }
-        
-        .info-content {
-            color: var(--color-sand-light);
-            font-size: var(--font-size-md);
-            line-height: 1.8;
-        }
-        
-        .info-list {
-            list-style: none;
-        }
-        
-        .info-list li {
-            margin-bottom: var(--spacing-sm);
-            padding-right: var(--spacing-md);
-            position: relative;
-        }
-        
-        .info-list li:before {
-            content: "•";
-            color: var(--color-desert-gold);
-            position: absolute;
-            right: 0;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
-            justify-content: center;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
+        #loadingScreen .spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(201, 168, 124, 0.1);
+            border-top-color: var(--gold);
             border-radius: 50%;
-            background: rgba(212, 167, 106, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-desert-gold);
-            font-size: var(--font-size-lg);
-            transition: var(--transition-fast);
-            border: 1px solid rgba(212, 167, 106, 0.3);
+            animation: spin 1s linear infinite;
         }
-        
-        .social-link:hover {
-            background: rgba(212, 167, 106, 0.3);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-        
-        /* الفوتر */
-        footer {
-            background: linear-gradient(to top, var(--color-shadow-dark), transparent);
-            padding: var(--spacing-xl) 0 var(--spacing-md);
-            margin-top: var(--spacing-xl);
-            border-top: 1px solid rgba(212, 167, 106, 0.2);
-            text-align: center;
+        #loadingScreen .loading-text {
+            margin-top: 25px;
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            font-weight: 300;
         }
-        
-        .copyright {
-            color: var(--color-sand-light);
-            font-size: var(--font-size-sm);
-            margin-top: var(--spacing-md);
+
+        /* ===== استجابة ===== */
+        @media (max-width: 992px) {
+            .main-title { font-size: 3.2rem; }
+            .chapter-detail { padding: 35px 30px; }
+            .chapter-detail-title { font-size: 2.2rem; }
         }
-        
-        /* تصميم متجاوب */
-        @media (max-width: 1024px) {
-            :root {
-                --font-size-xxxl: 3rem;
-                --font-size-xxl: 2.5rem;
-                --font-size-xl: 1.8rem;
-                --font-size-lg: 1.2rem;
-                --spacing-xl: 3rem;
-                --spacing-lg: 2rem;
-            }
-            
-            .home-content {
-                margin: 0 var(--spacing-md);
-            }
-        }
-        
         @media (max-width: 768px) {
-            :root {
-                --font-size-xxxl: 2.5rem;
-                --font-size-xxl: 2rem;
-                --font-size-xl: 1.5rem;
-                --font-size-lg: 1.1rem;
-                --spacing-xl: 2rem;
-                --spacing-lg: 1.5rem;
-            }
-            
-            .container {
-                padding: 0 var(--spacing-sm);
-            }
-            
-            .nav-buttons {
-                display: none;
-            }
-            
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .chapter-detail {
-                padding: var(--spacing-md);
-                margin: 0 var(--spacing-sm);
-            }
-            
-            .chapter-detail-content {
-                font-size: var(--font-size-md);
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
+            .header-content { flex-wrap: wrap; gap: 12px; justify-content: center; }
+            .nav-buttons { gap: 6px; }
+            .nav-btn { padding: 4px 14px; font-size: 0.9rem; }
+            .logo { font-size: 1.6rem; }
+            .main-title { font-size: 2.6rem; }
+            .subtitle { font-size: 1.1rem; }
+            .menu-grid { grid-template-columns: 1fr 1fr; }
+            .chapter-detail { padding: 25px 18px; }
+            .chapter-detail-title { font-size: 1.8rem; }
+            .chapter-detail-content { font-size: 1rem; }
+            .chapter-card { padding: 18px; }
+            .chapter-card-title { font-size: 1.2rem; }
         }
-        
         @media (max-width: 480px) {
-            .home-content {
-                padding: var(--spacing-md);
-            }
-            
-            .chapter-card {
-                padding: var(--spacing-md);
-            }
-            
-            .chapter-detail {
-                padding: var(--spacing-sm);
-            }
-            
-            .navigation-buttons {
-                flex-direction: column;
-                gap: var(--spacing-sm);
-            }
-            
-            .navigation-buttons button {
-                width: 100%;
-            }
+            .menu-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 2.2rem; }
+            .chapter-detail { padding: 18px 12px; }
+            .navigation-buttons { flex-direction: column; align-items: center; }
+            .navigation-buttons .nav-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- شاشة التحميل -->
-    <div class="loading-screen" id="loadingScreen">
+
+    <!-- ===== شاشة التحميل ===== -->
+    <div id="loadingScreen">
         <div class="spinner"></div>
-        <div class="loading-text">يوسف - قصة عربية ملحمية</div>
+        <div class="loading-text">يوسف · التائب</div>
     </div>
-    
-    <!-- الخلفية البانورامية -->
-    <div class="background-container">
-        <div class="desert-background"></div>
+
+    <!-- ===== الخلفية ===== -->
+    <div class="bg-container"></div>
+    <div class="fantasy">
+        <div class="dust"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
     </div>
-    
-    <!-- عناصر الفانتازيا -->
-    <div class="fantasy-elements">
-        <div class="sand-dunes"></div>
-        <div class="sun"></div>
-        <div class="stars"></div>
-        <div class="ghost-eyes"></div>
-        <div class="ghost-eyes"></div>
-        <div class="ghost-eyes"></div>
-        <div class="ghost-eyes"></div>
-        <div class="ghost-eyes"></div>
-        <div class="floating-rooh"></div>
-    </div>
-    
-    <!-- الهيدر -->
+
+    <!-- ===== الهيدر ===== -->
     <header id="mainHeader">
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo" onclick="showPage('home')">الــتــائــب<span> | قصة عربية خيالية</span></a>
-                
-                <div class="nav-buttons">
-                    <button class="nav-btn active" onclick="showPage('home')">الرئيسية</button>
-                    <button class="nav-btn" onclick="showPage('chapters')">الفصول</button>
-                    <button class="nav-btn" onclick="showPage('info')">معلومات</button>
-                </div>
+        <div class="header-content">
+            <a href="#" class="logo" onclick="showPage('home')">التائب <span>| يوسف</span></a>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showPage('home')">الرئيسية</button>
+                <button class="nav-btn" onclick="showPage('chapters')">الفصول</button>
+                <button class="nav-btn" onclick="showPage('info')">معلومات</button>
             </div>
         </div>
     </header>
-    
-    <!-- الصفحة الرئيسية -->
+
+    <!-- ===== الصفحة الرئيسية ===== -->
     <section id="home" class="active">
         <div class="container">
             <div class="home-content">
-                <h1 class="main-title">الــتــائــب</h1>
+                <h1 class="main-title">التائب <span class="light">· يوسف</span></h1>
                 <p class="subtitle">
-                    رحلة في أعماق الصحراء والنفس البشرية. قصة فلسفية ملحمية تبحث عن النور في قلب الظلام، والماء في صحراء الروح. ملحمة عن التوبة والخلاص، عن الظل والنور، وعن القلب الذي يولد من رماد ذنوبه إنسانًا جديدًا.
+                    رحلة في أعماق الصحراء والنفس البشرية. قصة فلسفية ملحمية تبحث عن النور في قلب الظلام، والماء في صحراء الروح. عن التوبة والخلاص، وعن القلب الذي يولد من رماد ذنوبه إنسانًا جديدًا.
                 </p>
-                
-                <div class="menu-container">
-                    <div class="menu-grid">
-                        <div class="menu-card" onclick="showPage('chapters')">
-                            <div class="menu-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            <h3 class="menu-title">قراءة القصة</h3>
-                            <p class="menu-description">ابدأ رحلتك مع التائب عبر فصول القصة العشرة</p>
-                        </div>
-                        
-                        <div class="menu-card" onclick="showPage('chapter-1')">
-                            <div class="menu-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <h3 class="menu-title">الفصل الأول</h3>
-                            <p class="menu-description">بداية الظلام والظل - الانطلاق في الرحلة</p>
-                        </div>
-                        
-                        <div class="menu-card" onclick="showPage('chapter-5')">
-                            <div class="menu-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h3 class="menu-title">الفصل الخامس</h3>
-                            <p class="menu-description">أوزار الرمال - نقطة التحول</p>
-                        </div>
-                        
-                        <div class="menu-card" onclick="showPage('chapter-10')">
-                            <div class="menu-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h3 class="menu-title">الفصل العاشر</h3>
-                            <p class="menu-description">الماء والظل - النهاية</p>
-                        </div>
-                        
-                        <div class="menu-card" onclick="showPage('info')">
-                            <div class="menu-icon">
-                                <i class="fas fa-info-circle"></i>
-                            </div>
-                            <h3 class="menu-title">معلومات القصة</h3>
-                            <p class="menu-description">تعرف أكثر على القصة وشخصياتها</p>
-                        </div>
-                        
-                        <div class="menu-card" onclick="showPage('characters')">
-                            <div class="menu-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3 class="menu-title">الشخصيات</h3>
-                            <p class="menu-description">تعرف على شخصيات القصة الرئيسية</p>
-                        </div>
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('chapters')">
+                        <div class="icon"><i class="fas fa-book-open"></i></div>
+                        <h3>قراءة القصة</h3>
+                        <p>جميع الفصول العشرة</p>
+                    </div>
+                    <div class="menu-card" onclick="showPage('chapter-1')">
+                        <div class="icon"><i class="fas fa-play"></i></div>
+                        <h3>الفصل الأول</h3>
+                        <p>بداية الظلام والظل</p>
+                    </div>
+                    <div class="menu-card" onclick="showPage('chapter-5')">
+                        <div class="icon"><i class="fas fa-heart"></i></div>
+                        <h3>الفصل الخامس</h3>
+                        <p>أوزار الرمال</p>
+                    </div>
+                    <div class="menu-card" onclick="showPage('chapter-10')">
+                        <div class="icon"><i class="fas fa-star"></i></div>
+                        <h3>الفصل العاشر</h3>
+                        <p>الماء والظل</p>
+                    </div>
+                    <div class="menu-card" onclick="showPage('characters')">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>الشخصيات</h3>
+                        <p>تعرف على أبطال القصة</p>
+                    </div>
+                    <div class="menu-card" onclick="showPage('info')">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <h3>معلومات</h3>
+                        <p>عن القصة والكاتب</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة قائمة الفصول -->
+
+    <!-- ===== قائمة الفصول ===== -->
     <section id="chapters">
         <div class="container">
             <div class="chapters-list">
-                <h2 class="main-title" style="text-align: center; margin-bottom: var(--spacing-xl);">فصول القصة</h2>
-                
-                <!-- الفصل 1 -->
+                <h2 class="main-title" style="text-align:center; margin-bottom:45px;">فصول القصة</h2>
+
                 <div class="chapter-card" onclick="showPage('chapter-1')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الأول</span>
                         <h3 class="chapter-card-title">بداية الظلام والظل</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        صحراء. هكذا كانت دائمًا. ليست مكانًا، بل كائنًا حيًا يتنفس حرًّا وريحًا وموتًا. تسير فيها الشمس كصيادٍ لا يعرف الرحمة...
-                    </p>
+                    <p class="chapter-excerpt">صحراء. هكذا كانت دائمًا. ليست مكانًا، بل كائنًا حيًا يتنفس حرًّا وريحًا وموتًا...</p>
                 </div>
-                
-                <!-- الفصل 2 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-2')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الثاني</span>
                         <h3 class="chapter-card-title">الحرب والخسارة</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        لم يكن اختياره. فالغارة جاءت كالعاصفة المفاجئة. قبيلة "بنو ظبيان" هجمت عند الفجر. خيولهم كالسيل، سيوفهم كالبرق...
-                    </p>
+                    <p class="chapter-excerpt">لم يكن اختياره. فالغارة جاءت كالعاصفة المفاجئة. قبيلة "بنو ظبيان" هجمت عند الفجر...</p>
                 </div>
-                
-                <!-- الفصل 3 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-3')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الثالث</span>
                         <h3 class="chapter-card-title">من يحاكم من؟</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        ثلاثة أيام بلا طعام. يشرب من الماء الآسن في حفر الصخور. الشمس تحرفه، والجوع يضعفه. لكن العيون لا تتركه...
-                    </p>
+                    <p class="chapter-excerpt">ثلاثة أيام بلا طعام. يشرب من الماء الآسن في حفر الصخور. الشمس تحرفه، والجوع يضعفه...</p>
                 </div>
-                
-                <!-- الفصل 4 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-4')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الرابع</span>
                         <h3 class="chapter-card-title">جحيم الروح</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        قرر أن لا يهرب أكثر. وجد كهفًا في جبل صغير. دخل إليه. قال لنفسه: "سأواجهك. أيها الشبح. تعال"...
-                    </p>
+                    <p class="chapter-excerpt">قرر أن لا يهرب أكثر. وجد كهفًا في جبل صغير. دخل إليه. قال لنفسه: "سأواجهك. أيها الشبح. تعال"...</p>
                 </div>
-                
-                <!-- الفصل 5 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-5')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الخامس</span>
                         <h3 class="chapter-card-title">أوزار الرمال</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        بقي أيامًا قرب المخيم، لكنه لا يجرؤ على الدخول. يعيش على ما يصطاده من حيوانات صغيرة، ويشرب من ماء المطر...
-                    </p>
+                    <p class="chapter-excerpt">بقي أيامًا قرب المخيم، لكنه لا يجرؤ على الدخول. يعيش على ما يصطاده من حيوانات صغيرة...</p>
                 </div>
-                
-                <!-- الفصل 6 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-6')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل السادس</span>
                         <h3 class="chapter-card-title">اقتراب هادئ</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        بدأ يوسف يقترب من المخيم، لكن كظلّ نافع. لا يظهر نفسه، لكنه يساعد. يرى شيخًا يحاول رفع جرّة ماء ثقيلة...
-                    </p>
+                    <p class="chapter-excerpt">بدأ يوسف يقترب من المخيم، لكن كظلّ نافع. لا يظهر نفسه، لكنه يساعد...</p>
                 </div>
-                
-                <!-- الفصل 7 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-7')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل السابع</span>
                         <h3 class="chapter-card-title">الانكسار العظيم</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        جاءت القطيعة من حيث لم يتوقع. جماعة من رجال قبيلته – الذين نجوا من الغارة – كانوا يتجمعون عند البئر...
-                    </p>
+                    <p class="chapter-excerpt">جاءت القطيعة من حيث لم يتوقع. جماعة من رجال قبيلته – الذين نجوا من الغارة – كانوا يتجمعون عند البئر...</p>
                 </div>
-                
-                <!-- الفصل 8 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-8')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل الثامن</span>
                         <h3 class="chapter-card-title">ثمن العودة</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        قرر العودة. لكن ليس كالفارس المنتصر. بل كرجل يريد أن يدفع ثمن ما أفسد. دخل المخيم عند الفجر...
-                    </p>
+                    <p class="chapter-excerpt">قرر العودة. لكن ليس كالفارس المنتصر. بل كرجل يريد أن يدفع ثمن ما أفسد...</p>
                 </div>
-                
-                <!-- الفصل 9 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-9')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل التاسع</span>
                         <h3 class="chapter-card-title">الفارس من جديد</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        مرت الأشهر. وتغيرت النظرات. من سخرية، إلى فضول، إلى احترام. رأوه يخدم بلا تذمر. يضحّي بنومه ليرعى مريضًا...
-                    </p>
+                    <p class="chapter-excerpt">مرت الأشهر. وتغيرت النظرات. من سخرية، إلى فضول، إلى احترام...</p>
                 </div>
-                
-                <!-- الفصل 10 -->
+
                 <div class="chapter-card" onclick="showPage('chapter-10')">
                     <div class="chapter-card-header">
                         <span class="chapter-number">الفصل العاشر</span>
                         <h3 class="chapter-card-title">الماء والظل</h3>
                     </div>
-                    <p class="chapter-excerpt">
-                        جاء اليوم الذي خطب فيه يوسف روح. لم يكن خطابًا عاديًا. جاء إلى أخيها. قال: "أنا رجل له ماضٍ أسود. تبتُ"...
-                    </p>
+                    <p class="chapter-excerpt">جاء اليوم الذي خطب فيه يوسف روح. لم يكن خطابًا عاديًا...</p>
                 </div>
-                
-                <button class="nav-btn" onclick="showPage('home')" style="margin: var(--spacing-xl) auto; display: block;">
-                    <i class="fas fa-home"></i> العودة للرئيسية
-                </button>
+
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة الفصل الأول -->
+
+    <!-- ===== الفصل الأول ===== -->
     <section id="chapter-1">
         <div class="container">
             <div class="chapter-detail">
-                <div class="chapter-detail-header">
-                    <div class="chapter-number">الفصل الأول</div>
-                    <h2 class="chapter-detail-title">بداية الظلام والظل</h2>
-                </div>
-                
+                <span class="chapter-number">الفصل الأول</span>
+                <h2 class="chapter-detail-title">بداية الظلام والظل</h2>
                 <div class="chapter-detail-content">
                     <p>صحراء. هكذا كانت دائمًا. ليست مكانًا، بل كائنًا حيًا يتنفس حرًّا وريحًا وموتًا. تسير فيها الشمس كصيادٍ لا يعرف الرحمة، تصهر الحجارة وتجفف الأرواح قبل الأجساد.</p>
-                    
                     <p>في قلب هذا الجحيم الممتد، كان <span class="highlight" data-tooltip="يوسف بن خالد بن حجر - فارس قبيلة بني حجر">يوسف بن خالد بن حجر</span> يسير.</p>
-                    
                     <p>سيفه على كتفه كحمل ثقيل من الذكريات. خطواته ثقيلة، رغم قوته التي ترويها القبائل. كان فارسًا يُضرب بكبريائه المثل، لكنه في تلك اللحظة كان أشبه بجذيمة هشيم تتقاذفه الرياح.</p>
-                    
                     <p>أبوه؟ قتله الغزو وهو صغير. ربته الصحراء بقانونها الوحيد: كن قويًا أو مُت. فأصبح قويًا. قويًا لدرجة القسوة. قويًا لدرجة أن الدماء التي أراقها – بعضها بحق، وكثير منها بغير حق – أصبحت شبحًا يسكن عينيه.</p>
-                    
                     <p>كان يتذكر ذلك الشيخ. وقفته المتحدية. صراخه حين سقط السيف. كان الشيخ يدافع عن بئر ماء لبني عمه. وكان يوسف يأمر بالغارة. "الشهامة للقبيلة فقط" هكذا علموه. فقتل الشيخ. وقتل معه براءة يوسف الأخيرة.</p>
-                    
                     <p>الآن، بعد سنوات، يسمع صراخ الشيخ في هدير الريح.</p>
-                    
                     <p>توقف عند كثيب عال. نظر إلى مضارب قبيلته من بعيد. الدخان الخفيف يتصاعد. الحياة تستمر. لكنه لم يعد جزءًا منها. شعوره بالغربة عنها أعمق من غربته في هذه الصحراء.</p>
-                    
                     <p>ثم رأاها.</p>
-                    
                     <p>بين الخيام البيضاء، عند حافة المخيم. امرأة. واقفة كأنها نخلة سامقة في أرض جرداء. لم تكن ترقص، لم تتكلم. فقط وقفت. ثيابها البيضاء ترفرف برقة. وجهها نصف مستور، لكن عينيها… رأى عينيها من تلك المسافة. كانتا كبئر عميق، صافٍ، تلمح فيه السلام الذي نسيه.</p>
-                    
                     <p>انكمش قلبه. غريزة الفارس هبت فيه: خطر! لكنه لم يدرِ لماذا. ليست خطر السيف، بل خطر آخر. خطر أن تنظر هاتان العينان إلى ما وراء الدرع، إلى الجروح النازفة في روحه.</p>
-                    
                     <p>التفت يوسف بعنف. مشى بعيدًا، مبتعدًا عن المخيم وعن تلك النظرة. قرر في قرارة نفسه: "لن أعود. لا أستحق أن أرى ذلك النقاء".</p>
                 </div>
-                
                 <div class="navigation-buttons">
-                    <button class="nav-btn disabled">
-                        <i class="fas fa-arrow-right"></i> الفصل السابق
-                    </button>
-                    <button class="nav-btn" onclick="showPage('chapter-2')">
-                        الفصل التالي <i class="fas fa-arrow-left"></i>
-                    </button>
+                    <button class="nav-btn disabled"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-2')">التالي <i class="fas fa-arrow-left"></i></button>
                 </div>
-                
-                <div style="text-align: center; margin-top: var(--spacing-lg);">
-                    <button class="nav-btn" onclick="showPage('chapters')">
-                        <i class="fas fa-list"></i> جميع الفصول
-                    </button>
-                    <button class="nav-btn" onclick="showPage('home')">
-                        <i class="fas fa-home"></i> الرئيسية
-                    </button>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة الفصل الثاني -->
+
+    <!-- ===== الفصل الثاني ===== -->
     <section id="chapter-2">
         <div class="container">
             <div class="chapter-detail">
-                <div class="chapter-detail-header">
-                    <div class="chapter-number">الفصل الثاني</div>
-                    <h2 class="chapter-detail-title">الحرب والخسارة</h2>
-                </div>
-                
+                <span class="chapter-number">الفصل الثاني</span>
+                <h2 class="chapter-detail-title">الحرب والخسارة</h2>
                 <div class="chapter-detail-content">
                     <p>لم يكن اختياره. فالغارة جاءت كالعاصفة المفاجئة.</p>
-                    
                     <p>قبيلة <span class="highlight" data-tooltip="بنو ظبيان - قبيلة معادية">"بنو ظبيان"</span> هجمت عند الفجر. خيولهم كالسيل، سيوفهم كالبرق. كانوا يريدون الماء والمواشي والنساء. كانوا يريدون كل شيء.</p>
-                    
                     <p>انتفض يوسف من كوابيسه. أمسك سيفه. صرخته اهتزت لها الخيام: "إلى السلاح!". كان كالأسد الهائج. يقاتل بشراسة من دفن ضعفًا عميقًا تحت طبقات من الفولاذ. كل ضربة سيف كانت تحاول قطع ذنبه. كل صرخة كانت تحاول إسكات صراخ الشيخ في رأسه.</p>
-                    
                     <p>لكن الأعداد كانت كالجراد.</p>
-                    
                     <p>رأى صديق طفولته، <span class="highlight" data-tooltip="ماجد - صديق طفولة يوسف">ماجد</span>، يسقط بطعنة في ظهره. نظر إليه ماجد نظرة استفسار: أين حمايتك؟ ثم غاب. سقط آخر. وثالث. دماء أصدقائه تلطخ يديه أكثر من دماء الأعداء.</p>
-                    
                     <p>حوصر. عشرة رجال حوله. قاتل حتى كلّ ساعده. ثم جاءت ضربة على رأسه من خلفه. سقط في الظلام.</p>
-                    
-                    <p>---</p>
-                    
                     <p>استفاق مقيدًا. رائحة العرق والدم والخوف. كان في خيمة الأسر عند بني ظبيان. الحراس يضحكون على نار صغيرة، يتحدثون عن النساء اللواتي سبين.</p>
-                    
                     <p>في ظلمة الليل، بدأت العيون تظهر له.</p>
-                    
                     <p>ليست عيون الحراس. بل عيون أخرى. في زوايا الخيمة. عيون الشيخ القتيل تنظر إليه بلا كلام. عيون أطفال بكوا حين أحرق خيام قومهم. عيون ماجد وهو يسقط. كانت تظهر ثم تختفي، لكن نظراتها تبقى، تخترق جلده، تصل إلى عظامه.</p>
-                    
                     <p>في ليلة ثالثة، بينما كانت العيون تكاد تختنقه، رأى من فتحة الخيمة – على تل بعيد جدًا – ضوءًا خافتًا. لم يكن قمرًا، بل شيء آخر. شكل امرأة واقفة. رآها للحظة، ثم اختفت. لكن تلك اللحظة كسرت حدة الظلام. تنفس.</p>
-                    
                     <p>قرر الهروب. لم يكن خوفًا من الأسر، بل هربًا من تلك العيون.</p>
-                    
                     <p>انتظر حتى نام الحراس. انزلق كظل، قطع قيوده بحجر حاد. تسلل بين الخيام. ركض إلى الصحراء بلا طعام ولا ماء. فقط برغبة واحدة: الهرب من العيون التي تلاحقه.</p>
                 </div>
-                
                 <div class="navigation-buttons">
-                    <button class="nav-btn" onclick="showPage('chapter-1')">
-                        <i class="fas fa-arrow-right"></i> الفصل السابق
-                    </button>
-                    <button class="nav-btn" onclick="showPage('chapter-3')">
-                        الفصل التالي <i class="fas fa-arrow-left"></i>
-                    </button>
+                    <button class="nav-btn" onclick="showPage('chapter-1')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-3')">التالي <i class="fas fa-arrow-left"></i></button>
                 </div>
-                
-                <div style="text-align: center; margin-top: var(--spacing-lg);">
-                    <button class="nav-btn" onclick="showPage('chapters')">
-                        <i class="fas fa-list"></i> جميع الفصول
-                    </button>
-                    <button class="nav-btn" onclick="showPage('home')">
-                        <i class="fas fa-home"></i> الرئيسية
-                    </button>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة الفصل الخامس -->
+
+    <!-- ===== الفصل الثالث ===== -->
+    <section id="chapter-3">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل الثالث</span>
+                <h2 class="chapter-detail-title">من يحاكم من؟</h2>
+                <div class="chapter-detail-content">
+                    <p>ثلاثة أيام بلا طعام. يشرب من الماء الآسن في حفر الصخور. الشمس تحرفه، والجوع يضعفه. لكن العيون لا تتركه.</p>
+                    <p>في اليوم الرابع، وصل إلى قرية صغيرة مهجورة. بقايا جدران، بئر جافة، وريح تعوي كالنواح. جلس في ظل جدار منهار. أغمض عينيه.</p>
+                    <p>وهناك، في نصف الحلم، جاءه الشيخ.</p>
+                    <p>لم يكن شبحًا مرعبًا. كان جالسًا مثله، على بعد خطوات. ينظر إليه بهدوء. قال الشيخ: "لماذا قتلتني؟"</p>
+                    <p>أجاب يوسف بصوت مبحوح: "كنت عدواً."</p>
+                    <p>قال الشيخ: "كنت شيخاً يريد ماءً لعياله."</p>
+                    <p>صمت يوسف. ثم قال: "أنا كنت أتبع أوامر قبيلتي."</p>
+                    <p>ابتسم الشيخ ابتسامة حزينة: "وأنت الآن، من تتبع؟"</p>
+                    <p>لم يجب يوسف.</p>
+                    <p>قال الشيخ: "لست هنا لأحاكمك. جئت لأقول لك: أنت من يحاكم نفسه. كل ليلة. كل يوم. حتى تموت أو تتوب."</p>
+                    <p>اختفى الشيخ. وبقي يوسف وحيداً مع سؤاله: "من أنا حقاً؟"</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-2')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-4')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل الرابع ===== -->
+    <section id="chapter-4">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل الرابع</span>
+                <h2 class="chapter-detail-title">جحيم الروح</h2>
+                <div class="chapter-detail-content">
+                    <p>قرر أن لا يهرب أكثر. وجد كهفًا في جبل صغير. دخل إليه. قال لنفسه: "سأواجهك. أيها الشبح. تعال."</p>
+                    <p>جلس في الظلام. انتظر. لم يأت الشبح. لكنه شعر بشيء أثقل: نفسه. رأى كل ما فعله. كل دم أراقه. كل دمعة تسبب بها. رأى وجه الشيخ، وجه ماجد، وجه أمهات بكين، رأى طفلاً ضائعاً في الصحراء يشبهه.</p>
+                    <p>بكى. بكى حتى جفت دموعه. ثم سمع صوتاً من داخله: "أما آن لك أن تتوب؟"</p>
+                    <p>خرج من الكهف في الصباح. كان ضوء الفجر يخترق الأفق. شعر للحظة أن الظل خفّ عنه قليلاً. عرف أنه لا يستطيع محو الماضي، لكنه يستطيع أن يبدأ طريقاً جديداً.</p>
+                    <p>قال: "سأتوب. ولكن كيف؟"</p>
+                    <p>لم يجب أحد. لكنه شعر أن الخطوة الأولى هي أن يعود. ليس إلى مجده، بل إلى الناس الذين ظلمهم.</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-3')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-5')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل الخامس ===== -->
     <section id="chapter-5">
         <div class="container">
             <div class="chapter-detail">
-                <div class="chapter-detail-header">
-                    <div class="chapter-number">الفصل الخامس</div>
-                    <h2 class="chapter-detail-title">أوزار الرمال</h2>
-                </div>
-                
+                <span class="chapter-number">الفصل الخامس</span>
+                <h2 class="chapter-detail-title">أوزار الرمال</h2>
                 <div class="chapter-detail-content">
                     <p>بقي أيامًا قرب المخيم، لكنه لا يجرؤ على الدخول. يعيش على ما يصطاده من حيوانات صغيرة، ويشرب من ماء المطر الذي يجمع في الصخور.</p>
-                    
                     <p>في أحد الأيام، بينما كان ينتظر عند أطراف المخيم، رأى شيئًا أذاب جليدًا في قلبه.</p>
-                    
                     <p>طفل صغير من القبيلة ضلّ طريقه في الصحراء القريبة. كان يبكي ويجري خلف سحلية، ثم لم يعد يعرف طريق العودة. الشمس تبدأ بحرقه.</p>
-                    
                     <p>رآه يوسف. وتذكر طفلاً من الضحايا، بكى هكذا يومًا. تذكر كيف ضحك هو ورفاقه على بكاء ذلك الطفل.</p>
-                    
                     <p>هذه المرة، تحرك بلا تفكير.</p>
-                    
                     <p>أسرع إلى الطفل. حمله بلطف. الطفل خاف منه في البداية – ربما رأى شرًا في عيني يوسف – لكن يوسف هزّ رأسه، وقال بصوت خشن لم يعتد على اللين: "لا تخف. سأرجعك لأمك".</p>
-                    
                     <p>أرجع الطفل إلى أطراف المخيم، ثم تراجع إلى الخلف لينظر من بعيد حين تجد الأم ابنها. بكاء الأم من الفرحة، واحتضانها للصغير… كان مشهدًا بسيطًا. لكنه اخترق يوسف كالسهم.</p>
-                    
                     <p>عاد إلى مخبئه. بكى. ليست دموعًا عادية، بل دموعًا حارقة كالحمم. بكى على كل طفل خاف منه. على كل أم حزنت بسببه.</p>
-                    
                     <p>في تلك الليلة، الظل لم يأت. والنور الخافت بدا أقرب قليلاً.</p>
-                    
                     <p>فهم شيئًا: التوبة ليست كلمات تقال. التوبة هي أن تحمل طفلاً ضائعًا إلى أمه، بعد أن كنت تسبب في ضياع الأطفال.</p>
                 </div>
-                
                 <div class="navigation-buttons">
-                    <button class="nav-btn" onclick="showPage('chapter-4')">
-                        <i class="fas fa-arrow-right"></i> الفصل السابق
-                    </button>
-                    <button class="nav-btn" onclick="showPage('chapter-6')">
-                        الفصل التالي <i class="fas fa-arrow-left"></i>
-                    </button>
+                    <button class="nav-btn" onclick="showPage('chapter-4')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-6')">التالي <i class="fas fa-arrow-left"></i></button>
                 </div>
-                
-                <div style="text-align: center; margin-top: var(--spacing-lg);">
-                    <button class="nav-btn" onclick="showPage('chapters')">
-                        <i class="fas fa-list"></i> جميع الفصول
-                    </button>
-                    <button class="nav-btn" onclick="showPage('home')">
-                        <i class="fas fa-home"></i> الرئيسية
-                    </button>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة الفصل العاشر -->
+
+    <!-- ===== الفصل السادس ===== -->
+    <section id="chapter-6">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل السادس</span>
+                <h2 class="chapter-detail-title">اقتراب هادئ</h2>
+                <div class="chapter-detail-content">
+                    <p>بدأ يوسف يقترب من المخيم، لكن كظلّ نافع. لا يظهر نفسه، لكنه يساعد. يرى شيخًا يحاول رفع جرّة ماء ثقيلة، فيأتي من بعيد، يرفعها له، ويذهب بسرعة. يرى امرأة تبحث عن حطب، فيترك لها حزمة بجانب خيمتها.</p>
+                    <p>كان يعمل في صمت. لا يطلب جزاءً، ولا شكرًا. فقط كان يريد أن يخفف عنهم بعض الألم الذي تسبب به.</p>
+                    <p>في إحدى الليالي، رأتْه روح.</p>
+                    <p>كان يعالج بعيرًا جريحًا على أطراف المخيم. جلس بجانبه، يدهن جرحه بدهن من عنده. كان يتحدث مع البعير كأنه صديق قديم.</p>
+                    <p>وقفت روح خلفه. قال: "لماذا تفعل هذا؟"</p>
+                    <p>لم يلتفت. قال: "لأنني تعبت من فعل الشر."</p>
+                    <p>قالت: "أنا روح." قال: "أنا يوسف."</p>
+                    <p>قالت: "أعرفك. كلنا نعرفك. ولكننا لا نعرف هذا الذي يفعل الخير في الخفاء."</p>
+                    <p>نظر إليها. رأى عينيها اللتين رأهما من بعيد. قال: "هذا هو أنا الجديد. إن قبلتموني."</p>
+                    <p>لم تجب. لكنها ابتسمت ابتسامة خفيفة، ومضت.</p>
+                    <p>تلك الابتسامة كانت كقطرة ماء في صحرائه.</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-5')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-7')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل السابع ===== -->
+    <section id="chapter-7">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل السابع</span>
+                <h2 class="chapter-detail-title">الانكسار العظيم</h2>
+                <div class="chapter-detail-content">
+                    <p>جاءت القطيعة من حيث لم يتوقع. جماعة من رجال قبيلته – الذين نجوا من الغارة – كانوا يتجمعون عند البئر. رأوه يقترب. أحدهم صرخ: "ها هو الفارّ الجبان! تركنا في المعركة وهرب!"</p>
+                    <p>تقدم نحوه رجل اسمه <span class="highlight" data-tooltip="زيد بن عمرو - من وجهاء القبيلة">زيد بن عمرو</span>. قال: "بماذا تجيء يا يوسف؟ أتريد أن تعيد مجدك الذي أضعته؟"</p>
+                    <p>نظر يوسف إلى الأرض. قال: "لا. جئت لأطلب السماح. جئت لأخدم."</p>
+                    <p>ضحكوا. بعضهم بصق على الأرض. قال زيد: "الخدمة؟ أنت فارس! كيف تخدم؟"</p>
+                    <p>قال يوسف: "الفارس الحقيقي من يخدم، لا من يتسلط."</p>
+                    <p>سكتوا. ولكن نظراتهم كانت كالسيوف.</p>
+                    <p>في تلك اللحظة، شعر يوسف بانهيار أكبر من كل انهياراته السابقة. لم يكن انهياراً من عدو، بل من قومه. لكنه لم يغضب. قال في نفسه: "هذا جزء من توبتي. أن أتحمل الإهانة."</p>
+                    <p>مشى بعيداً. لكنه لم يغادر المخيم. بقي على حافته، يخدم من بعيد.</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-6')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-8')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل الثامن ===== -->
+    <section id="chapter-8">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل الثامن</span>
+                <h2 class="chapter-detail-title">ثمن العودة</h2>
+                <div class="chapter-detail-content">
+                    <p>قرر العودة. لكن ليس كالفارس المنتصر. بل كرجل يريد أن يدفع ثمن ما أفسد. دخل المخيم عند الفجر.</p>
+                    <p>وقف في الساحة العامة. قال بصوت عالٍ: "أنا يوسف. لست هنا لأطلب قيادة. أنا هنا لأطلب أن أكون خادماً. اسمحوا لي أن أعمل معكم، وأن أساعد، وأن أصلح ما أفسدته يداي."</p>
+                    <p>جاء زيد وقال: "وكيف نثق بك؟"</p>
+                    <p>قال يوسف: "بفعلي، لا بقولي."</p>
+                    <p>صمت القوم. ثم تكلم شيخ كبير: "دعوه. فالقلب يتغير، والحياة تمضي. من تاب تاب الله عليه."</p>
+                    <p>قبلوه، لكن ببرود. بدأ يوسف يعمل أصعب الأعمال: سقاية الإبل، جمع الحطب، حفر الآبار. كان يعمل حتى تتقرح يداه.</p>
+                    <p>في الليل، كان يجلس وحيدًا، ينظر إلى النجوم. كان التعب الجسدي يخفف من تعب الروح.</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-7')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-9')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل التاسع ===== -->
+    <section id="chapter-9">
+        <div class="container">
+            <div class="chapter-detail">
+                <span class="chapter-number">الفصل التاسع</span>
+                <h2 class="chapter-detail-title">الفارس من جديد</h2>
+                <div class="chapter-detail-content">
+                    <p>مرت الأشهر. وتغيرت النظرات. من سخرية، إلى فضول، إلى احترام. رأوه يخدم بلا تذمر. يضحّي بنومه ليرعى مريضًا. يعطي طعامه لجائع.</p>
+                    <p>في أحد الأيام، جاءت غارة جديدة من قبيلة معادية. هذه المرة، لم يتردد يوسف. أمسك سيفه، لكنه هذه المرة لم يقاتل بغضب، بل بدافع الحماية. قاتل بشراسة، لكنه لم يقتل إلا من اضطر. وبعد المعركة، رأوا أنه أنقذ حياة كثيرين من نسائهم وأطفالهم.</p>
+                    <p>جاءه زيد بعد المعركة. قال: "لقد رأينا ما فعلت. أنت فارس من جديد. لكن فارساً مختلفاً."</p>
+                    <p>قال يوسف: "الفارس الحقيقي هو من يحمي، لا من يقتل."</p>
+                    <p>احتضنه زيد. وقال: "أهلاً بعودتك يا يوسف."</p>
+                    <p>لكن يوسف نظر إلى خيمة روح، التي كانت تنظر إليه من بعيد. عرف أن عودته الحقيقية كانت إليها.</p>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showPage('chapter-8')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn" onclick="showPage('chapter-10')">التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== الفصل العاشر ===== -->
     <section id="chapter-10">
         <div class="container">
             <div class="chapter-detail">
-                <div class="chapter-detail-header">
-                    <div class="chapter-number">الفصل العاشر</div>
-                    <h2 class="chapter-detail-title">الماء والظل</h2>
-                </div>
-                
+                <span class="chapter-number">الفصل العاشر</span>
+                <h2 class="chapter-detail-title">الماء والظل</h2>
                 <div class="chapter-detail-content">
                     <p>جاء اليوم الذي خطب فيه يوسف روح.</p>
-                    
                     <p>لم يكن خطابًا عاديًا. جاء إلى أخيها. قال: "أنا رجل له ماضٍ أسود. تبتُ، والله شهيد على قلبي. أريد أن أكون لروح ظلاً تستظل به من حر الدنيا، وماءً ترتوي منه نفسها. لا أعدك بغنى، ولا بقوة كالسابق. ولكن أعدك بقلب يحفظها، ويد تخدمها، وصلاة أدعو بها لها."</p>
-                    
                     <p>بكى أخوها. وقال: "رأيت تغيّرك يا يوسف. والتائب من الذنب كمن لا ذنب له. هي قبلت من زمان."</p>
-                    
-                    <p>---</p>
-                    
                     <p>في ليلة الزفاف البسيطة، جلس يوسف وحده لحظة قبل الدخول إلى الخيمة.</p>
-                    
                     <p>نظر إلى السماء المرصعة بالنجوم. تذكر مسيره الأول في الصحراء، يحمل ظله الثقيل. تذكر العيون التي كانت تلاحقه. تذكر الظل الذي كان يمشي بجواره.</p>
-                    
                     <p>الآن، الظل ذاب. لم يعد يخافه. لأنه عرف أن الظل كان جزءًا منه، وكان يحتاج فقط إلى نور يعترف به.</p>
-                    
                     <p>دخل الخيمة. رأى روح جالسة بسلام. نظرت إليه. وأشارت له أن يجلس.</p>
-                    
                     <p>جلس قربها. أخذ يدها برقة. قال: "كنت أبحث عن الماء في صحراء روحي. ووجدتك."</p>
-                    
                     <p>قالت روح، بصوتها الهادئ الذي أصبح أجمل ما يسمع: "وكنت أرى ظلًا يبحث عن نور. وكان قلبي نورًا ينتظره."</p>
-                    
                     <p>صمتوا. وكان الصمت هو الحوار الأعمق.</p>
-                    
                     <p>خارج الخيمة، كانت الصحراء هادئة. ريح لطيفة تمرّ، تحمل عبق الأمل. نجوم كثيرة تتلألأ، كأنها ترسم طريقًا جديدًا في السماء.</p>
-                    
                     <p>يوسف أغمض عينيه. وشعر بشيء غريب: الامتلاء. امتلاء ليس من أخذ، بل من عطاء. امتلاء ليس من نصر، بل من سلام.</p>
-                    
                     <p>فتح عينيه. نظر إلى روح. قال في سره: "الحمد لله الذي هداني. الحمد لله الذي جعل في القلوب الرحمة. الحمد لله الذي يجعل من الظل نورًا، ومن الصحراء جنة."</p>
-                    
-                    <h3 style="margin-top: 2rem; color: var(--color-desert-gold); text-align: center; font-family: 'Reem Kufi', cursive;">والخاتمة</h3>
-                    
-                    <p style="text-align: center; font-style: italic;">عاش يوسف وروح بقية أيامهم في هدوء. لم تخلُ الحياة من مشقات الصحراء، لكنهم واجهوها معًا.</p>
-                    
-                    <p style="text-align: center; font-style: italic;">وأصبح يوسف يُضرب به المثل، ليس في القوة القديمة، بل في قوة التغيير. يقولون: "كن كيوسف، يولد من رماده إنسانًا جديدًا."</p>
-                    
-                    <p style="text-align: center; font-style: italic;">وتبقى الصحراء شاهدة: على كل ظل يمكن أن ينير، وعلى كل قلب يمكن أن يتوب، وعلى كل حب ينبت حيث لا يُنتظر أن ينبت شيء.</p>
+                    <h3 style="margin-top: 2.5rem; color: var(--gold); text-align: center; font-weight: 700;">الخاتمة</h3>
+                    <p style="text-align:center; font-style:italic; color: #D3C7BA;">عاش يوسف وروح بقية أيامهم في هدوء. لم تخلُ الحياة من مشقات الصحراء، لكنهم واجهوها معًا.</p>
+                    <p style="text-align:center; font-style:italic; color: #D3C7BA;">وأصبح يوسف يُضرب به المثل، ليس في القوة القديمة، بل في قوة التغيير. يقولون: "كن كيوسف، يولد من رماده إنسانًا جديدًا."</p>
+                    <p style="text-align:center; font-style:italic; color: #D3C7BA;">وتبقى الصحراء شاهدة: على كل ظل يمكن أن ينير، وعلى كل قلب يمكن أن يتوب، وعلى كل حب ينبت حيث لا يُنتظر أن ينبت شيء.</p>
                 </div>
-                
                 <div class="navigation-buttons">
-                    <button class="nav-btn" onclick="showPage('chapter-9')">
-                        <i class="fas fa-arrow-right"></i> الفصل السابق
-                    </button>
-                    <button class="nav-btn disabled">
-                        الفصل التالي <i class="fas fa-arrow-left"></i>
-                    </button>
+                    <button class="nav-btn" onclick="showPage('chapter-9')"><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="nav-btn disabled">التالي <i class="fas fa-arrow-left"></i></button>
                 </div>
-                
-                <div style="text-align: center; margin-top: var(--spacing-lg);">
-                    <button class="nav-btn" onclick="showPage('chapters')">
-                        <i class="fas fa-list"></i> جميع الفصول
-                    </button>
-                    <button class="nav-btn" onclick="showPage('home')">
-                        <i class="fas fa-home"></i> الرئيسية
-                    </button>
+                <div class="btn-center">
+                    <button class="nav-btn" onclick="showPage('chapters')"><i class="fas fa-list"></i> جميع الفصول</button>
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة الشخصيات -->
+
+    <!-- ===== صفحة الشخصيات ===== -->
     <section id="characters">
         <div class="container">
-            <div class="info-container">
-                <h2 class="main-title" style="text-align: center; margin-bottom: var(--spacing-xl);">شخصيات القصة</h2>
-                
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3 class="info-title">يوسف بن خالد بن حجر</h3>
-                        <div class="info-content">
-                            <p>البطل الرئيسي للقصة، فارس قبيلة بني حجر المشهور بقوته وكبريائه. بدأ رحلته كرجل قاسٍ متعطش للدماء، ثم تحول عبر القصة إلى إنسان يبحث عن التوبة والخلاص.</p>
-                            <ul class="info-list">
-                                <li>فارس قبيلة بني حجر</li>
-                                <li>فقد والده وهو صغير</li>
-                                <li>عانى من ذنوب الماضي</li>
-                                <li>بحث عن التوبة والخلاص</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">روح</h3>
-                        <div class="info-content">
-                            <p>المرأة التي تمثل النقاء والسلام في القصة. ابنة سالم المتوفي، تزوجت شابًا مات في غارة قبل سنة. تعيش مع أخيها، قليلة الكلام، كثيرة الصلاة. تمثل الأمل والخلاص ليوسف.</p>
-                            <ul class="info-list">
-                                <li>ابنة سالم المتوفي</li>
-                                <li>أرملة شاب مات في غارة</li>
-                                <li>تتميز بالسكينة والهدوء</li>
-                                <li>تمثل النقاء والأمل</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">الشيخ القتيل</h3>
-                        <div class="info-content">
-                            <p>الشيخ الذي قتله يوسف أثناء غارة على بئر ماء. يمثل الضمير والشعور بالذنب الذي يلاحق يوسف طوال القصة. كان يدافع عن بئر ماء لبني عمه عندما قتله يوسف.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">ماجد</h3>
-                        <div class="info-content">
-                            <p>صديق طفولة يوسف الذي قتل في الغارة على القبيلة. موته يمثل الفشل والخيانة التي شعر بها يوسف تجاه أصدقائه وأفراد قبيلته.</p>
-                        </div>
+            <h2 class="main-title" style="text-align:center; margin-bottom:40px;">شخصيات القصة</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 class="info-title">يوسف بن خالد</h3>
+                    <div class="info-content">
+                        <p>البطل الرئيسي، فارس قبيلة بني حجر. بدأ كرجل قاسٍ متعطش للدماء، ثم تحول عبر رحلة التوبة إلى إنسان يبحث عن الخلاص والسلام الداخلي.</p>
+                        <ul class="info-list">
+                            <li>فقد والده وهو صغير</li>
+                            <li>عانى من ذنوب الماضي</li>
+                            <li>بحث عن التوبة والخلاص</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <button class="nav-btn" onclick="showPage('home')" style="margin: var(--spacing-xl) auto; display: block;">
-                    <i class="fas fa-home"></i> العودة للرئيسية
-                </button>
+                <div class="info-card">
+                    <h3 class="info-title">روح</h3>
+                    <div class="info-content">
+                        <p>ابنة سالم المتوفي، أرملة شاب مات في غارة. تمثل النقاء والسلام في القصة. قليلة الكلام، كثيرة الصلاة، وكانت الأمل الذي انتظر يوسف.</p>
+                        <ul class="info-list">
+                            <li>تتميز بالسكينة والهدوء</li>
+                            <li>رمز النقاء والأمل</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">الشيخ القتيل</h3>
+                    <div class="info-content">
+                        <p>الشيخ الذي قتله يوسف أثناء غارة على بئر ماء. يمثل الضمير والشعور بالذنب الذي يلاحق يوسف طوال القصة.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">ماجد</h3>
+                    <div class="info-content">
+                        <p>صديق طفولة يوسف الذي قتل في الغارة. موته يمثل الفشل والخيانة التي شعر بها يوسف تجاه أصدقائه.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-center">
+                <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
             </div>
         </div>
     </section>
-    
-    <!-- صفحة المعلومات -->
+
+    <!-- ===== صفحة المعلومات ===== -->
     <section id="info">
         <div class="container">
-            <div class="info-container">
-                <h2 class="main-title" style="text-align: center; margin-bottom: var(--spacing-xl);">معلومات القصة</h2>
-                
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3 class="info-title">عن القصة</h3>
-                        <div class="info-content">
-                            <p>قصة "يوسف" هي ملحمة فلسفية عربية تجمع بين الواقعية والفانتازيا الرمزية. تبحث في أعماق النفس البشرية، وتتناول مواضيع التوبة والخلاص، الظل والنور، والصراع بين الخير والشر داخل الإنسان.</p>
-                            <p>القصة تتبع رحلة يوسف بن خالد من الظلام إلى النور، من القسوة إلى الرحمة، ومن الانكسار إلى البناء من جديد.</p>
-                        </div>
+            <h2 class="main-title" style="text-align:center; margin-bottom:40px;">معلومات القصة</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 class="info-title">عن القصة</h3>
+                    <div class="info-content">
+                        <p>قصة "يوسف" هي ملحمة فلسفية عربية تجمع بين الواقعية والرمزية. تبحث في أعماق النفس البشرية، وتتناول التوبة والخلاص، الظل والنور، والصراع بين الخير والشر داخل الإنسان.</p>
                     </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">المواضيع الرئيسية</h3>
-                        <div class="info-content">
-                            <ul class="info-list">
-                                <li>التوبة والخلاص الروحي</li>
-                                <li>الصراع بين الظل والنور</li>
-                                <li>قوة التغيير والإصلاح</li>
-                                <li>العلاقة بين الذنب والغفران</li>
-                                <li>البحث عن الهوية والمعنى</li>
-                                <li>قوة الحب والرحمة في التغيير</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">المواضيع الرئيسية</h3>
+                    <div class="info-content">
+                        <ul class="info-list">
+                            <li>التوبة والخلاص الروحي</li>
+                            <li>الصراع بين الظل والنور</li>
+                            <li>قوة التغيير والإصلاح</li>
+                            <li>العلاقة بين الذنب والغفران</li>
+                        </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">الفصول</h3>
-                        <div class="info-content">
-                            <p>تتكون القصة من 10 فصول رئيسية:</p>
-                            <ul class="info-list">
-                                <li>الفصل 1: بداية الظلام والظل</li>
-                                <li>الفصل 2: الحرب والخسارة</li>
-                                <li>الفصل 3: من يحاكم من؟</li>
-                                <li>الفصل 4: جحيم الروح</li>
-                                <li>الفصل 5: أوزار الرمال</li>
-                                <li>الفصل 6: اقتراب هادئ</li>
-                                <li>الفصل 7: الانكسار العظيم</li>
-                                <li>الفصل 8: ثمن العودة</li>
-                                <li>الفصل 9: الفارس من جديد</li>
-                                <li>الفصل 10: الماء والظل</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">الفصول</h3>
+                    <div class="info-content">
+                        <p>10 فصول رئيسية، من "بداية الظلام والظل" إلى "الماء والظل"</p>
                     </div>
-                    
-                    <div class="info-card">
-                        <h3 class="info-title">حقوق النشر</h3>
-                        <div class="info-content">
-                            <p>© 2026 قصة التــائــب - جميع الحقوق محفوظة</p>
-                            <p>هذا العمل إبداعي خيالي بحت، وأي تشابه مع أشخاص أو أحداث حقيقية هو محض الصدفة.</p>
-                            <p>تم تصميم وتطوير الموقع خصيصاً لعرض القصة بتجربة قراءة فريدة.</p>
-                            
-                            <div class="social-links">
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">حقوق النشر</h3>
+                    <div class="info-content">
+                        <p>© 2026 قصة التائب - جميع الحقوق محفوظة</p>
+                        <p>هذا عمل إبداعي خيالي بحت.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <button class="nav-btn" onclick="showPage('home')" style="margin: var(--spacing-xl) auto; display: block;">
-                    <i class="fas fa-home"></i> العودة للرئيسية
-                </button>
+            </div>
+            <div class="btn-center">
+                <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</button>
             </div>
         </div>
     </section>
-    
-    <!-- الفوتر -->
+
+    <!-- ===== الفوتر ===== -->
     <footer>
         <div class="container">
-            <p>© 2026 قصة التــائــب - جميع الحقوق محفوظة | تصميم وتطوير: يوسف خالد | التــائــب |(𝑨𝒊𝒛𝒆𝒏 𝒌𝒊𝒏𝒈 𝒐𝒇 𝒔𝒖𝒏)</p>
+            <p>© 2026 قصة التائب · يوسف</p>
             <p class="copyright">هذا العمل إبداعي خيالي بحت، وأي تشابه مع أشخاص أو أحداث حقيقية هو محض الصدفة.</p>
         </div>
     </footer>
-    
-    <!-- JavaScript -->
+
+    <!-- ===== JavaScript ===== -->
     <script>
-        // الانتظار حتى تحميل الصفحة
         window.addEventListener('load', function() {
-            // إخفاء شاشة التحميل
             setTimeout(function() {
-                document.getElementById('loadingScreen').style.opacity = '0';
+                const loading = document.getElementById('loadingScreen');
+                loading.style.opacity = '0';
                 setTimeout(function() {
-                    document.getElementById('loadingScreen').style.display = 'none';
-                }, 1000);
-            }, 1500);
-            
-            // تهيئة الموقع
+                    loading.style.display = 'none';
+                }, 800);
+            }, 1200);
             initSite();
         });
-        
+
         function initSite() {
-            // متغيرات عامة
             const header = document.getElementById('mainHeader');
-            const navButtons = document.querySelectorAll('.nav-btn');
-            
-            // تحديث الهيدر عند التمرير
+
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
+                if (window.scrollY > 80) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
             });
-            
-            // تحديث أزرار التنقل النشطة
+
+            // تفعيل التولتيب للـ highlight
+            document.querySelectorAll('.highlight').forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.color = '#fff';
+                });
+                el.addEventListener('mouseleave', function() {
+                    this.style.color = '';
+                });
+            });
+
             updateActiveNav();
-            
-            // إضافة تأثيرات للمرور على النصوص المميزة
-            document.querySelectorAll('.highlight').forEach(highlight => {
-                highlight.addEventListener('mouseenter', function() {
-                    this.style.textShadow = '0 0 10px rgba(212, 167, 106, 0.7)';
-                });
-                
-                highlight.addEventListener('mouseleave', function() {
-                    this.style.textShadow = 'none';
-                });
-            });
-            
-            // إضافة تأثير parallax بسيط
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const background = document.querySelector('.desert-background');
-                background.style.transform = `translateY(${scrolled * 0.5}px)`;
-            });
         }
-        
-        // عرض الصفحة المحددة وإخفاء الآخرين
+
         function showPage(pageId) {
-            // إخفاء جميع الصفحات
-            document.querySelectorAll("section").forEach(section => {
-                section.classList.remove("active");
-            });
-            
-            // إظهار الصفحة المطلوبة
-            document.getElementById(pageId).classList.add("active");
-            
-            // التمرير إلى الأعلى
-            window.scrollTo(0, 0);
-            
-            // تحديث أزرار التنقل النشطة
+            document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add("active");
+                target.style.animation = 'none';
+                requestAnimationFrame(() => {
+                    target.style.animation = 'fadeUp 0.7s ease forwards';
+                });
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             updateActiveNav();
-            
-            // إضافة تأثير fadeIn للصفحة الجديدة
-            const activePage = document.getElementById(pageId);
-            activePage.style.animation = 'none';
-            setTimeout(() => {
-                activePage.style.animation = 'fadeIn 0.6s ease-in-out';
-            }, 10);
         }
-        
-        // تحديث أزرار التنقل النشطة
+
         function updateActiveNav() {
-            const navButtons = document.querySelectorAll('.nav-btn');
-            const currentPage = document.querySelector('section.active').id;
-            
-            // إزالة النشاط من جميع الأزرار
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // تحديد الزر النشط بناءً على الصفحة الحالية
-            let activeButton = null;
-            
-            if (currentPage === 'home') {
-                activeButton = navButtons[0];
-            } else if (currentPage === 'chapters' || currentPage.startsWith('chapter-')) {
-                activeButton = navButtons[1];
-            } else if (currentPage === 'info' || currentPage === 'characters') {
-                activeButton = navButtons[2];
-            }
-            
-            // إضافة النشاط للزر المحدد
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
+            const current = document.querySelector('section.active')?.id || 'home';
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+
+            let activeBtn = null;
+            if (current === 'home') activeBtn = btns[0];
+            else if (current === 'chapters' || current.startsWith('chapter-')) activeBtn = btns[1];
+            else if (current === 'info' || current === 'characters') activeBtn = btns[2];
+
+            if (activeBtn) activeBtn.classList.add('active');
         }
-        
+
         // دعم المتصفحات القديمة
         if (!Element.prototype.scrollIntoView) {
-            Element.prototype.scrollIntoView = function() {
-                window.scrollTo(0, this.offsetTop);
-            };
+            Element.prototype.scrollIntoView = function() { window.scrollTo(0, this.offsetTop); };
         }
-        
-        // دعم classList للمتصفحات القديمة
-        if (!("classList" in document.documentElement)) {
-            Object.defineProperty(HTMLElement.prototype, 'classList', {
-                get: function() {
-                    var self = this;
-                    function update(fn) {
-                        return function(value) {
-                            var classes = self.className.split(/\s+/g),
-                                index = classes.indexOf(value);
-                            fn(classes, index, value);
-                            self.className = classes.join(" ");
-                        };
-                    }
-                    return {
-                        add: update(function(classes, index, value) {
-                            if (!~index) classes.push(value);
-                        }),
-                        remove: update(function(classes, index) {
-                            if (~index) classes.splice(index, 1);
-                        }),
-                        toggle: update(function(classes, index, value) {
-                            if (~index) classes.splice(index, 1);
-                            else classes.push(value);
-                        }),
-                        contains: function(value) {
-                            return !!~self.className.split(/\s+/g).indexOf(value);
-                        }
-                    };
-                }
-            });
-        }
-        
-        // رسالة ترحيب في وحدة التحكم
-        console.log('%c📖 قصة يوسف - رحلة فلسفية في أعماق النفس البشرية 📖', 'color: #D4A76A; font-size: 18px; font-weight: bold;');
-        console.log('%cتم تصميم هذا الموقع لعرض قصة يوسف بتجربة قراءة فريدة', 'color: #E6CCA5; font-size: 14px;');
     </script>
 </body>
-                            </html>
+</html>
